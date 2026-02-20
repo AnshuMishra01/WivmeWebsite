@@ -33,7 +33,7 @@ interface Particle {
   breathPhase: number;
 }
 
-const COLORS = ['#6346E6', '#E8573D', '#3B7D5E', '#D4940A', '#2D8FCA'];
+const COLORS = ['#6346E6', '#FFF07A', '#1A1A1E'];
 
 export default function MemoryParticles({
   getProgress,
@@ -46,8 +46,8 @@ export default function MemoryParticles({
 
   const initParticles = useCallback((w: number, h: number) => {
     const particles: Particle[] = [];
-    const cols = 10;
-    const rows = 7;
+    const cols = 5;
+    const rows = 3;
     const cx = w / 2;
     const cy = h / 2;
     const maxDist = Math.hypot(cx, cy);

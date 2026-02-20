@@ -16,15 +16,11 @@ import GrainOverlay from '@/components/GrainOverlay';
 const CustomCursor = dynamic(() => import('@/components/CustomCursor'), {
   ssr: false,
 });
-const ScrollProgress = dynamic(() => import('@/components/ScrollProgress'), {
-  ssr: false,
-});
 
 export default function Home() {
   return (
     <SmoothScroll>
       <Navigation />
-      <ScrollProgress />
       <CustomCursor />
       <main>
         <Hero />

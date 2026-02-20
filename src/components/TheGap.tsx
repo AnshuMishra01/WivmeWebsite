@@ -90,10 +90,8 @@ export default function TheGap() {
         {/* Generative canvas — memory network dissolving */}
         <MemoryParticles getProgress={getProgress} />
 
-        <div style={{ position: 'relative', zIndex: 2 }}>
-          <div className="label label--coral" style={{ marginBottom: 'var(--s-lg)' }}>
-            The problem
-          </div>
+        <div className="the-gap__content">
+          <div className="the-gap__label">The problem</div>
 
           {lineData.map((line, i) => (
             <div

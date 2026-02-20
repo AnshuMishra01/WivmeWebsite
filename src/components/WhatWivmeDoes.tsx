@@ -33,7 +33,7 @@ export default function WhatWivmeDoes() {
       const cards = cardsRef.current.filter(Boolean) as HTMLDivElement[];
       cards.forEach((card, i) => {
         gsap.from(card, {
-          y: 80,
+          y: 300,
           opacity: 0,
           duration: 0.9,
           ease: 'back.out(1.4)',
@@ -46,26 +46,43 @@ export default function WhatWivmeDoes() {
         });
       });
 
-      /* ─── Big words: clip-path reveal + font weight morph ─── */
+      /* ─── Big words: scroll-driven sideways movement ─── */
       const words = wordsRef.current.filter(Boolean) as HTMLSpanElement[];
       words.forEach((word, i) => {
-        /* Clip-path reveal — word carves into existence from left */
+        const isThirdCard = i === 2;
+        
+        /* Set initial centered position */
+        gsap.set(word, { xPercent: -50 });
+        
+        /* Fade in the word */
         gsap.fromTo(
           word,
-          { clipPath: 'inset(0 100% 0 0)', opacity: 0 },
+          { opacity: 0, y: 10 },
           {
-            clipPath: 'inset(0 0% 0 0)',
             opacity: 1,
-            duration: 1.2,
-            ease: 'expo.out',
+            y: 0,
+            duration: 0.4,
+            ease: 'power2.out',
             scrollTrigger: {
               trigger: word,
-              start: 'top 85%',
+              start: 'top 95%',
               once: true,
             },
-            delay: i * 0.18,
+            delay: i * 0.05,
           }
         );
+
+        /* Sideways movement on scroll - cards 1&2 right to left, card 3 left to right */
+        gsap.to(word, {
+          x: isThirdCard ? 400 : -400,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: word,
+            start: 'top 90%',
+            end: 'top 50%',
+            scrub: 0.5,
+          },
+        });
 
         /* Variable font weight animation on scroll.
            Inter is a variable font — its weight can be smoothly 
@@ -83,9 +100,9 @@ export default function WhatWivmeDoes() {
               ease: 'none',
               scrollTrigger: {
                 trigger: word,
-                start: 'top 80%',
-                end: 'bottom 40%',
-                scrub: 1,
+                start: 'top 95%',
+                end: 'top 60%',
+                scrub: 0.5,
               },
             }
           );
@@ -101,9 +118,9 @@ export default function WhatWivmeDoes() {
               ease: 'none',
               scrollTrigger: {
                 trigger: word,
-                start: 'top 80%',
-                end: 'bottom 40%',
-                scrub: 1,
+                start: 'top 95%',
+                end: 'top 60%',
+                scrub: 0.5,
               },
             }
           );
@@ -119,9 +136,9 @@ export default function WhatWivmeDoes() {
               ease: 'none',
               scrollTrigger: {
                 trigger: word,
-                start: 'top 80%',
-                end: 'bottom 40%',
-                scrub: 1,
+                start: 'top 95%',
+                end: 'top 60%',
+                scrub: 0.5,
               },
             }
           );
@@ -139,20 +156,26 @@ export default function WhatWivmeDoes() {
       desc: 'Short, targeted recall questions delivered at scientifically-timed intervals after each class.',
       color: 'violet',
       imgLabel: 'Student receiving a micro-revision prompt on phone',
+      word: 'Recall',
+      wordStyle: 'bold',
     },
     {
       num: '02',
       title: 'Spaced repetition engine',
       desc: 'Built on cognitive science. Each question surfaces at the exact moment a student is about to forget.',
-      color: 'coral',
+      color: 'violet',
       imgLabel: 'Spaced repetition schedule visualization',
+      word: 'Reinforce',
+      wordStyle: 'serif',
     },
     {
       num: '03',
       title: 'Silent teacher dashboard',
       desc: "Teachers see class-wide memory gaps without running a single extra test. No extra workload.",
-      color: 'sage',
+      color: 'butter',
       imgLabel: 'Teacher dashboard showing class retention data',
+      word: 'Measure',
+      wordStyle: 'outline',
     },
   ];
 
@@ -195,53 +218,36 @@ export default function WhatWivmeDoes() {
           {features.map((f, i) => (
             <div
               key={i}
-              ref={(el) => {
-                cardsRef.current[i] = el;
-              }}
-              className={`what-we-do__card what-we-do__card--${f.color}`}
+              className="what-we-do__card-wrapper"
             >
-              <div className="what-we-do__card-num">{f.num}</div>
-              <h3>{f.title}</h3>
-              <p>{f.desc}</p>
-              <div
-                className={`img-ph img-ph--${f.color} what-we-do__card-image`}
+              {/* Big word behind the card */}
+              <span
+                ref={(el) => {
+                  wordsRef.current[i] = el;
+                }}
+                className={`what-we-do__card-word what-we-do__word--${f.wordStyle}`}
               >
-                <span>{f.imgLabel}</span>
+                {f.word}
+              </span>
+              
+              {/* Card on top */}
+              <div
+                ref={(el) => {
+                  cardsRef.current[i] = el;
+                }}
+                className={`what-we-do__card what-we-do__card--${f.color}`}
+              >
+                <div className="what-we-do__card-num">{f.num}</div>
+                <h3>{f.title}</h3>
+                <p>{f.desc}</p>
+                <div
+                  className={`img-ph img-ph--${f.color} what-we-do__card-image`}
+                >
+                  <span>{f.imgLabel}</span>
+                </div>
               </div>
             </div>
           ))}
-        </div>
-
-        {/* Big typographic words — structured rebellion from Plan.md:
-            Same size, same alignment, but each word gets a completely 
-            different typographic treatment.                            */}
-        <div className="what-we-do__words-wrap">
-          <span
-            ref={(el) => {
-              wordsRef.current[0] = el;
-            }}
-            className="what-we-do__word what-we-do__word--bold"
-          >
-            Recall
-          </span>
-          <br />
-          <span
-            ref={(el) => {
-              wordsRef.current[1] = el;
-            }}
-            className="what-we-do__word what-we-do__word--serif"
-          >
-            Reinforce
-          </span>
-          <br />
-          <span
-            ref={(el) => {
-              wordsRef.current[2] = el;
-            }}
-            className="what-we-do__word what-we-do__word--outline"
-          >
-            Measure
-          </span>
         </div>
       </div>
     </section>

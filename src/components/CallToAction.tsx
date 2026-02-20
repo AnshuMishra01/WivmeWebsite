@@ -2,6 +2,12 @@
 import { useEffect, useRef } from 'react';
 import { gsap, ScrollTrigger } from '@/lib/gsap';
 
+declare global {
+  interface Window {
+    Calendly: any;
+  }
+}
+
 /* ──────────────────────────────────────────────────────────
    CallToAction — Character-assembly animation.
    
@@ -25,6 +31,14 @@ import { gsap, ScrollTrigger } from '@/lib/gsap';
 export default function CallToAction() {
   const sectionRef = useRef<HTMLElement>(null);
   const headlineRef = useRef<HTMLHeadingElement>(null);
+
+  const openCalendly = () => {
+    if (typeof window !== 'undefined' && window.Calendly) {
+      window.Calendly.initPopupWidget({
+        url: 'https://calendly.com/anshu-wivmeai/30min?primary_color=bb36f6'
+      });
+    }
+  };
 
   useEffect(() => {
     if (!sectionRef.current || !headlineRef.current) return;
@@ -98,8 +112,8 @@ export default function CallToAction() {
           Protect learning after class.
         </h2>
         <div className="cta__actions">
-          <button className="btn btn--violet">Get early access</button>
-          <button className="btn btn--outline">Talk to our team</button>
+          <button className="btn btn--violet" onClick={openCalendly}>Get early access</button>
+          <button className="btn btn--outline" onClick={openCalendly}>Talk to our team</button>
         </div>
 
       </div>
