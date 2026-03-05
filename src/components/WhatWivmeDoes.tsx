@@ -155,7 +155,7 @@ export default function WhatWivmeDoes() {
       title: 'Micro-revision prompts',
       desc: 'Short, targeted recall questions delivered at scientifically-timed intervals after each class.',
       color: 'violet',
-      imgLabel: 'Student receiving a micro-revision prompt on phone',
+      imgSrc: '/wivme-content/1 Student receiving a micro-revision prompt on phone.png',
       word: 'Recall',
       wordStyle: 'bold',
     },
@@ -164,7 +164,7 @@ export default function WhatWivmeDoes() {
       title: 'Spaced repetition engine',
       desc: 'Built on cognitive science. Each question surfaces at the exact moment a student is about to forget.',
       color: 'violet',
-      imgLabel: 'Spaced repetition schedule visualization',
+      imgSrc: '/wivme-content/2 Spaced repetition schedule visualization.png',
       word: 'Reinforce',
       wordStyle: 'serif',
     },
@@ -173,7 +173,7 @@ export default function WhatWivmeDoes() {
       title: 'Silent teacher dashboard',
       desc: "Teachers see class-wide memory gaps without running a single extra test. No extra workload.",
       color: 'butter',
-      imgLabel: 'Teacher dashboard showing class retention data',
+      imgSrc: '/wivme-content/3 Teacher dashboard showing class retention data.png',
       word: 'Measure',
       wordStyle: 'outline',
     },
@@ -195,22 +195,6 @@ export default function WhatWivmeDoes() {
               <br />
               Three <span className="serif">quiet</span> powers.
             </h2>
-          </div>
-          <div>
-            <p className="what-we-do__body">
-              Wivme plugs into the gap between understanding and remembering. No
-              new curriculum. No class time lost. Just a layer of intelligent
-              revision that runs in the background, catching what teachers
-              can&apos;t track manually.
-            </p>
-            <div
-              className="img-ph img-ph--cream what-we-do__right-image"
-              style={{ marginTop: 'var(--s-md)' }}
-            >
-              <span>
-                Product overview: how Wivme fits into the learning flow
-              </span>
-            </div>
           </div>
         </div>
 
@@ -240,10 +224,8 @@ export default function WhatWivmeDoes() {
                 <div className="what-we-do__card-num">{f.num}</div>
                 <h3>{f.title}</h3>
                 <p>{f.desc}</p>
-                <div
-                  className={`img-ph img-ph--${f.color} what-we-do__card-image`}
-                >
-                  <span>{f.imgLabel}</span>
+                <div className="what-we-do__card-image">
+                  <img src={f.imgSrc} alt={f.title} />
                 </div>
               </div>
             </div>

@@ -137,14 +137,11 @@ export default function WhyItWorks() {
               forget. That&apos;s not a feature. That&apos;s 40 years of memory research
               working behind the scenes.
             </p>
-            <div
-              className="img-ph img-ph--cream why-it-works__image"
-              style={{ marginTop: 'var(--s-md)' }}
-            >
-              <span>
-                Research diagram: Ebbinghaus forgetting curve with Wivme
-                intervention points
-              </span>
+            <div className="why-it-works__image" style={{ marginTop: 'var(--s-md)' }}>
+              <img 
+                src="/research diagram.png" 
+                alt="Research diagram: Ebbinghaus forgetting curve with Wivme intervention points"
+              />
             </div>
           </div>
 

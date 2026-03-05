@@ -9,9 +9,32 @@ declare global {
 
 export default function Navigation() {
   const [scrolled, setScrolled] = useState(false);
+  const [currentSection, setCurrentSection] = useState('hero');
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 60);
+    const onScroll = () => {
+      setScrolled(window.scrollY > 60);
+      
+      // Detect which section is in view
+      const sections = ['hero', 'how', 'who', 'why'];
+      const scrollPosition = window.scrollY + 100;
+      
+      for (const sectionId of sections) {
+        const element = document.getElementById(sectionId) || 
+                       (sectionId === 'hero' ? document.querySelector('.hero') : null);
+        if (element) {
+          const rect = element.getBoundingClientRect();
+          const elementTop = window.scrollY + rect.top;
+          const elementBottom = elementTop + rect.height;
+          
+          if (scrollPosition >= elementTop && scrollPosition < elementBottom) {
+            setCurrentSection(sectionId);
+            break;
+          }
+        }
+      }
+    };
+    
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
@@ -25,7 +48,7 @@ export default function Navigation() {
   };
 
   return (
-    <nav className={`nav${scrolled ? ' nav-scrolled' : ''}`}>
+    <nav className={`nav${scrolled ? ' nav-scrolled' : ''} nav--${currentSection}`}>
       <a href="#" className="nav-logo">
         <img src="/logo.png" alt="Wisme" className="nav-logo-image" />
       </a>

@@ -58,21 +58,21 @@ export default function WhoItsFor() {
       labelColor: 'yellow',
       title: 'K-12 schools that care about retention',
       desc: 'Your teachers already teach well. Wivme makes sure that learning sticks beyond the classroom door.',
-      imgLabel: 'School building or classroom environment',
+      imgSrc: '/wivme-content/4 School building or classroom environment.png',
     },
     {
       label: 'Teachers',
       labelColor: 'purple',
       title: "Teachers who don't want more work",
       desc: 'Zero extra preparation. Wivme generates revision prompts automatically from your existing curriculum.',
-      imgLabel: 'Teacher reviewing dashboard',
+      imgSrc: '/wivme-content/5 Teacher reviewing dashboard.png',
     },
     {
       label: 'Students',
       labelColor: 'yellow',
       title: 'Students who want to actually remember',
       desc: "10 minutes a day. That's all it takes. Short, targeted prompts that fit between classes.",
-      imgLabel: 'Student on phone reviewing prompt',
+      imgSrc: '/wivme-content/6 Student on phone reviewing prompt.png',
     },
   ];
 
@@ -100,8 +100,8 @@ export default function WhoItsFor() {
               style={{ zIndex: personas.length - i }}
             >
               <div className="who-its-for__card-inner">
-                <div className="img-ph who-its-for__card-image">
-                  <span>{p.imgLabel}</span>
+                <div className="who-its-for__card-image">
+                  <img src={p.imgSrc} alt={p.label} />
                 </div>
                 <div className="who-its-for__card-content">
                   <div
