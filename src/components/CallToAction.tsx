@@ -98,7 +98,7 @@ export default function CallToAction() {
           Protect learning after class.
         </h2>
         <div className="cta__actions">
-          <button className="btn btn--violet">Get early access</button>
+          <a href="https://calendly.com/anshu-wivmeai/30min" target="_blank" rel="noopener noreferrer" className="btn btn--violet">Get early access</a>
         </div>
 
       </div>

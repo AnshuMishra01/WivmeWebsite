@@ -19,7 +19,7 @@ export default function Navigation() {
         <a href="#how" className="nav-link">How it works</a>
         <a href="#who" className="nav-link">Who it&apos;s for</a>
         <a href="#why" className="nav-link">Why it works</a>
-        <button className="nav-cta">Get early access</button>
+        <a href="https://calendly.com/anshu-wivmeai/30min" target="_blank" rel="noopener noreferrer" className="nav-cta">Get early access</a>
       </div>
     </nav>
   );

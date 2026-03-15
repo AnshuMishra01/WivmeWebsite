@@ -140,7 +140,7 @@ export default function Hero() {
               in class is actually remembered.
             </p>
             <div ref={actionsRef} className="hero__actions">
-              <button className="btn btn--violet">Get early access</button>
+              <a href="https://calendly.com/anshu-wivmeai/30min" target="_blank" rel="noopener noreferrer" className="btn btn--violet">Get early access</a>
             </div>
           </div>
         </div>
