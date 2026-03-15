@@ -140,12 +140,6 @@ export default function WhereItFits() {
           <span className="serif">Wivme works in silence.</span>
         </p>
 
-        <div className="img-ph img-ph--sage where-it-fits__image">
-          <span>
-            Timeline diagram showing Wivme&apos;s position in the learning
-            workflow
-          </span>
-        </div>
       </div>
     </section>
   );

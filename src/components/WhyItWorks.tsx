@@ -1,6 +1,8 @@
 'use client';
 import { useEffect, useRef } from 'react';
+import Image from 'next/image';
 import { gsap, ScrollTrigger } from '@/lib/gsap';
+import ebbinghausCurveImage from '@/Images/7 Ebbinghaus curve.png';
 
 /* ──────────────────────────────────────────────────────────
    WhyItWorks — Authority section with animated stats.
@@ -137,14 +139,14 @@ export default function WhyItWorks() {
               forget. That&apos;s not a feature. That&apos;s 40 years of memory research
               working behind the scenes.
             </p>
-            <div
-              className="img-ph img-ph--cream why-it-works__image"
-              style={{ marginTop: 'var(--s-md)' }}
-            >
-              <span>
-                Research diagram: Ebbinghaus forgetting curve with Wivme
-                intervention points
-              </span>
+            <div className="why-it-works__image" style={{ marginTop: 'var(--s-md)' }}>
+              <Image
+                src={ebbinghausCurveImage}
+                alt="Research diagram: Ebbinghaus forgetting curve with Wivme intervention points"
+                fill
+                sizes="(max-width: 900px) 92vw, 620px"
+                className="why-it-works__image-el"
+              />
             </div>
           </div>
 

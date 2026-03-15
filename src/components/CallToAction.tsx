@@ -99,7 +99,6 @@ export default function CallToAction() {
         </h2>
         <div className="cta__actions">
           <button className="btn btn--violet">Get early access</button>
-          <button className="btn btn--outline">Talk to our team</button>
         </div>
 
       </div>
