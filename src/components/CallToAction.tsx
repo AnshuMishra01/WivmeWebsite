@@ -93,7 +93,7 @@ export default function CallToAction() {
 
   return (
     <section ref={sectionRef} className="cta dark-s">
-      <div className="container">
+      <div className="container-full">
         <h2 ref={headlineRef} className="cta__headline">
           Protect learning after class.
         </h2>
