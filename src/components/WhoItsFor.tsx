@@ -116,7 +116,7 @@ export default function WhoItsFor() {
       label: 'Teachers',
       labelColor: 'coral',
       title: "Teachers who don't want more work",
-      desc: 'Zero extra preparation. Teachers get a live dashboard with class-wide retention insights and auto-generated prompts from existing curriculum.',
+      desc: 'No extra work for teachers. Just enable episodes and see exactly what each student is forgetting.',
       imgLabel: 'Teacher reviewing dashboard',
       imageSrc: teacherImage,
     },

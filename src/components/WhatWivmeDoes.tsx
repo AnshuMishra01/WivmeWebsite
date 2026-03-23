@@ -83,8 +83,8 @@ export default function WhatWivmeDoes() {
   const features = [
     {
       num: '01',
-      title: 'Micro-revision episodes',
-      desc: 'Short, focused memory moments delivered at scientifically timed intervals after each class.',
+      title: 'Conversational Recall',
+      desc: 'Conversational audio episodes, activated by teachers, where students listen to peer discussions designed to reinforce and reconstruct classroom learning.',
       color: 'violet',
       imgLabel: 'Student receiving a micro-revision prompt on phone',
       imageSrc: promptImage,
