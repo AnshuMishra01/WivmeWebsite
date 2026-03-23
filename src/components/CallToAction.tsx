@@ -99,6 +99,7 @@ export default function CallToAction() {
         </h2>
         <div className="cta__actions">
           <a href="https://calendly.com/anshu-wivmeai/30min" target="_blank" rel="noopener noreferrer" className="btn btn--violet">Get early access</a>
+          <a href="/contact" className="btn btn--outline">Contact</a>
         </div>
 
       </div>

@@ -2,6 +2,7 @@
 import { useEffect, useRef } from 'react';
 import Image from 'next/image';
 import { gsap } from '@/lib/gsap';
+import ScrollIndicator from './ScrollIndicator';
 import classImage from '@/Images/8 class.png';
 import wivmeImage from '@/Images/9 wivme.png';
 import examImage from '@/Images/10 exam.png';
@@ -224,6 +225,8 @@ export default function WhereItFits() {
           Between the lesson and the test,{' '}
           <span className="serif">Wivme works in silence.</span>
         </p>
+
+        <ScrollIndicator />
       </div>
     </section>
   );

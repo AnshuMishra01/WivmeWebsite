@@ -2,6 +2,7 @@
 import { useEffect, useRef } from 'react';
 import Image from 'next/image';
 import { gsap, ScrollTrigger } from '@/lib/gsap';
+import ScrollIndicator from './ScrollIndicator';
 import heroImage from '@/Images/Hero.png';
 
 /* ──────────────────────────────────────────────────────────
@@ -145,6 +146,7 @@ export default function Hero() {
           </div>
         </div>
       </div>
+      <ScrollIndicator />
     </section>
   );
 }

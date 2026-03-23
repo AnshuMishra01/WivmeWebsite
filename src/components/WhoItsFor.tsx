@@ -2,6 +2,7 @@
 import { useEffect, useRef } from 'react';
 import Image from 'next/image';
 import { gsap, ScrollTrigger } from '@/lib/gsap';
+import ScrollIndicator from '@/components/ScrollIndicator';
 import schoolImage from '@/Images/4 School building or classroom environment.png';
 import teacherImage from '@/Images/5 Teacher reviewing dashboard.png';
 import studentImage from '@/Images/6 Student on phone reviewing prompt.png';
@@ -115,7 +116,7 @@ export default function WhoItsFor() {
       label: 'Teachers',
       labelColor: 'coral',
       title: "Teachers who don't want more work",
-      desc: 'Zero extra preparation. Wivme generates revision prompts automatically from your existing curriculum.',
+      desc: 'Zero extra preparation. Teachers get a live dashboard with class-wide retention insights and auto-generated prompts from existing curriculum.',
       imgLabel: 'Teacher reviewing dashboard',
       imageSrc: teacherImage,
     },
@@ -185,6 +186,7 @@ export default function WhoItsFor() {
             </article>
           ))}
         </div>
+        <ScrollIndicator tone="dark" />
       </div>
     </section>
   );

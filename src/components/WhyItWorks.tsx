@@ -148,6 +148,10 @@ export default function WhyItWorks() {
                 className="why-it-works__image-el"
               />
             </div>
+            <p className="why-it-works__graph-note">
+              Based on the Ebbinghaus forgetting curve model (Ebbinghaus, 1885)
+              and modern spacing-effect validation studies.
+            </p>
           </div>
 
           <div>

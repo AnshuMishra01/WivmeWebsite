@@ -2,6 +2,7 @@
 import { useEffect, useRef, useCallback } from 'react';
 import { gsap, ScrollTrigger } from '@/lib/gsap';
 import MemoryParticles from './MemoryParticles';
+import ScrollIndicator from './ScrollIndicator';
 
 /* ──────────────────────────────────────────────────────────
    TheGap — Pinned scroll narrative with generative canvas.
@@ -129,6 +130,8 @@ export default function TheGap() {
         >
           &ldquo;this is the gap.&rdquo;
         </div>
+
+        <ScrollIndicator />
       </div>
     </div>
   );

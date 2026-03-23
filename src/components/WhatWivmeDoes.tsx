@@ -2,6 +2,7 @@
 import { useEffect, useRef } from 'react';
 import Image from 'next/image';
 import { gsap, ScrollTrigger } from '@/lib/gsap';
+import ScrollIndicator from '@/components/ScrollIndicator';
 import promptImage from '@/Images/1 Student receiving a micro-revision prompt on phone.png';
 import repetitionImage from '@/Images/2 Spaced repetition schedule visualization.png';
 import dashboardImage from '@/Images/3 Teacher dashboard showing class retention data.png';
@@ -82,8 +83,8 @@ export default function WhatWivmeDoes() {
   const features = [
     {
       num: '01',
-      title: 'Micro-revision prompts',
-      desc: 'Short, targeted recall questions delivered at scientifically-timed intervals after each class.',
+      title: 'Micro-revision episodes',
+      desc: 'Short, focused memory moments delivered at scientifically timed intervals after each class.',
       color: 'violet',
       imgLabel: 'Student receiving a micro-revision prompt on phone',
       imageSrc: promptImage,
@@ -166,6 +167,7 @@ export default function WhatWivmeDoes() {
               );
             })}
           </div>
+          <ScrollIndicator />
         </div>
       </div>
     </section>
