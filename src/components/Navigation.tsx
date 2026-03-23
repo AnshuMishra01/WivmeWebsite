@@ -1,5 +1,6 @@
 'use client';
 import { useEffect, useState } from 'react';
+import { usePathname } from 'next/navigation';
 
 type NavTheme = 'hero' | 'cream' | 'warm' | 'sage' | 'dark';
 type NavLinkId = 'how' | 'who' | 'why' | null;
@@ -30,11 +31,28 @@ function getLinkIdForElement(element: Element | null): NavLinkId {
 }
 
 export default function Navigation() {
+  const pathname = usePathname();
+  const isHomePage = pathname === '/';
   const [scrolled, setScrolled] = useState(false);
   const [theme, setTheme] = useState<NavTheme>('hero');
   const [activeLink, setActiveLink] = useState<NavLinkId>(null);
 
   useEffect(() => {
+    if (!isHomePage) {
+      setTheme('warm');
+      setActiveLink(null);
+      setScrolled(window.scrollY > 60);
+
+      const onScroll = () => {
+        setScrolled(window.scrollY > 60);
+      };
+
+      window.addEventListener('scroll', onScroll, { passive: true });
+      return () => {
+        window.removeEventListener('scroll', onScroll);
+      };
+    }
+
     const sections = Array.from(document.querySelectorAll('main > *'));
 
     const updateNav = () => {
@@ -84,18 +102,18 @@ export default function Navigation() {
       window.removeEventListener('scroll', onScroll);
       window.removeEventListener('resize', onScroll);
     };
-  }, []);
+  }, [isHomePage]);
 
   return (
     <nav className={`nav nav--${theme}${scrolled ? ' nav-scrolled' : ''}`}>
-      <a href="#" className="nav-logo">
+      <a href={isHomePage ? '#' : '/'} className="nav-logo">
         <span className="nav-logo-text">Wivme</span>
       </a>
       <div className="nav-links">
         {NAV_LINKS.map((link) => (
           <a
             key={link.id}
-            href={link.href}
+            href={isHomePage ? link.href : `/${link.href}`}
             className={`nav-link${activeLink === link.id ? ' nav-link--active' : ''}`}
             aria-current={activeLink === link.id ? 'page' : undefined}
           >
