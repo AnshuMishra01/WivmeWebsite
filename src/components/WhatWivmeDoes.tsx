@@ -83,24 +83,24 @@ export default function WhatWivmeDoes() {
   const features = [
     {
       num: '01',
-      title: 'Conversational Recall',
-      desc: 'Conversational audio episodes, activated by teachers, where students listen to peer discussions designed to reinforce and reconstruct classroom learning.',
+      title: 'Recall, the moment it matters',
+      desc: 'Short, low-effort revision moments arrive on your child’s phone exactly when memory starts to fade — not on a calendar, not on a quiz day, but at the moment science says the lesson is most at risk of being lost.',
       color: 'violet',
       imgLabel: 'Student receiving a micro-revision prompt on phone',
       imageSrc: promptImage,
     },
     {
       num: '02',
-      title: 'Spaced repetition engine',
-      desc: 'Built on cognitive science. Each question surfaces at the exact moment a student is about to forget.',
+      title: 'Built into the school day',
+      desc: 'Most learning apps live or die by whether your child feels like opening them. Wivme doesn’t. It’s tied to the lessons their school is actually teaching, every week — so it sticks where other apps quietly stop being used.',
       color: 'coral',
       imgLabel: 'Spaced repetition schedule visualization',
       imageSrc: repetitionImage,
     },
     {
       num: '03',
-      title: 'Silent teacher dashboard',
-      desc: "Teachers see class-wide memory gaps without running a single extra test. No extra workload.",
+      title: 'Memory, made visible',
+      desc: 'For the first time, what your child has actually retained — not just what they sat through — becomes something you and the school can see. Weeks before the next test, not after the report card.',
       color: 'sage',
       imgLabel: 'Teacher dashboard showing class retention data',
       imageSrc: dashboardImage,
@@ -119,9 +119,8 @@ export default function WhatWivmeDoes() {
         <div className="what-we-do__heading-col">
           <div className="what-we-do__label">How it works</div>
           <h2 className="what-we-do__headline">
-            One system.
-            <br />
-            Three <span className="serif">quiet</span> powers.
+            Memory you can{' '}
+            <span className="serif">finally</span> see.
           </h2>
         </div>
 

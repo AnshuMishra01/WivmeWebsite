@@ -1,13 +1,15 @@
 'use client';
 import { useEffect, useState } from 'react';
 import { usePathname } from 'next/navigation';
+import { useAudienceModal } from './AudienceModalProvider';
 
 type NavTheme = 'hero' | 'cream' | 'warm' | 'sage' | 'dark';
-type NavLinkId = 'how' | 'who' | 'why' | null;
+type NavLinkId = 'how' | 'who' | 'pilot' | 'why' | null;
 
 const NAV_LINKS = [
   { href: '#how', label: 'How it works', id: 'how' as const },
   { href: '#who', label: "Who it's for", id: 'who' as const },
+  { href: '#pilot', label: 'Pilot', id: 'pilot' as const, badge: true },
   { href: '#why', label: 'Why it works', id: 'why' as const },
 ];
 
@@ -27,10 +29,11 @@ function getLinkIdForElement(element: Element | null): NavLinkId {
   if (!element) return null;
 
   const id = element.getAttribute('id');
-  return id === 'how' || id === 'who' || id === 'why' ? id : null;
+  return id === 'how' || id === 'who' || id === 'pilot' || id === 'why' ? id : null;
 }
 
 export default function Navigation() {
+  const { openModal } = useAudienceModal();
   const pathname = usePathname();
   const isHomePage = pathname === '/';
   const [scrolled, setScrolled] = useState(false);
@@ -114,14 +117,16 @@ export default function Navigation() {
           <a
             key={link.id}
             href={isHomePage ? link.href : `/${link.href}`}
-            className={`nav-link${activeLink === link.id ? ' nav-link--active' : ''}`}
+            className={`nav-link${activeLink === link.id ? ' nav-link--active' : ''}${link.badge ? ' nav-link--badge' : ''}`}
             aria-current={activeLink === link.id ? 'page' : undefined}
           >
             {link.label}
+            {link.badge && <span className="nav-link__badge" aria-hidden />}
           </a>
         ))}
-        <a href="https://calendly.com/anshu-wivmeai/30min" target="_blank" rel="noopener noreferrer" className="nav-cta">Get early access</a>
+        <button type="button" className="nav-cta" onClick={openModal}>Register</button>
       </div>
+      <button type="button" className="nav-cta nav-cta-mobile" onClick={openModal}>Get started</button>
     </nav>
   );
 }

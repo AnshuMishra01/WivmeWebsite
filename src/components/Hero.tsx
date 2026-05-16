@@ -3,6 +3,7 @@ import { useEffect, useRef } from 'react';
 import Image from 'next/image';
 import { gsap, ScrollTrigger } from '@/lib/gsap';
 import ScrollIndicator from './ScrollIndicator';
+import { useAudienceModal } from './AudienceModalProvider';
 import heroImage from '@/Images/Hero.png';
 
 /* ──────────────────────────────────────────────────────────
@@ -21,6 +22,7 @@ import heroImage from '@/Images/Hero.png';
    ────────────────────────────────────────────────────────── */
 
 export default function Hero() {
+  const { openModal } = useAudienceModal();
   const sectionRef = useRef<HTMLElement>(null);
   const headlineRef = useRef<HTMLHeadingElement>(null);
   const recallRef = useRef<HTMLDivElement>(null);
@@ -28,6 +30,7 @@ export default function Hero() {
   const subRef = useRef<HTMLParagraphElement>(null);
   const actionsRef = useRef<HTMLDivElement>(null);
   const visualRef = useRef<HTMLDivElement>(null);
+  const pilotPillRef = useRef<HTMLAnchorElement>(null);
 
   useEffect(() => {
     const section = sectionRef.current;
@@ -40,13 +43,23 @@ export default function Hero() {
       /* ─── Main entrance timeline ─── */
       const tl = gsap.timeline({ delay: 0.4 });
 
+      // Pilot pill drops in first
+      if (pilotPillRef.current) {
+        tl.from(pilotPillRef.current, {
+          y: -12,
+          opacity: 0,
+          duration: 0.55,
+          ease: 'expo.out',
+        });
+      }
+
       // Words reveal with staggered expo.out
       tl.to(words, {
         y: 0,
         duration: 0.95,
         ease: 'expo.out',
         stagger: 0.07,
-      });
+      }, '-=0.2');
 
       // Recall panel
       tl.from(
@@ -99,6 +112,13 @@ export default function Hero() {
   return (
     <section ref={sectionRef} className="hero">
       <div className="hero__inner">
+        <a ref={pilotPillRef} href="#pilot" className="hero__pilot-pill">
+          <span className="hero__pilot-pill-dot" aria-hidden />
+          Pilot now open
+          <span className="hero__pilot-pill-sep" aria-hidden>·</span>
+          Grade 8 · ICSE &amp; CBSE
+          <span className="hero__pilot-pill-arrow" aria-hidden>→</span>
+        </a>
         <h1 ref={headlineRef} className="hero__headline">
           <span className="word">
             <span className="word-inner">Own</span>
@@ -116,13 +136,18 @@ export default function Hero() {
 
         <div className="hero__grid">
           <div ref={recallRef} className="hero__recall">
-            <div className="hero__recall-top">50+</div>
-            <div className="hero__recall-label">Day 1 to Day 45 recall</div>
+            <div className="hero__recall-top">67%</div>
+            <div className="hero__recall-label">
+              of new learning is gone by tomorrow morning.
+            </div>
             <div className="hero__days">
               <div className="hero__day">Day 1: 100%</div>
               <div className="hero__day">Day 7: 40%</div>
               <div className="hero__day">Day 21: 15%</div>
               <div className="hero__day">Day 45: 5%</div>
+            </div>
+            <div className="hero__recall-source">
+              Ebbinghaus, 1885 — replicated for 140 years.
             </div>
           </div>
 
@@ -137,11 +162,20 @@ export default function Hero() {
 
           <div ref={contentRef} className="hero__content">
             <p ref={subRef} className="hero__sub">
-              For the first time in decades, schools can ensure what&apos;s taught
-              in class is actually remembered.
+              Schools measure what was taught.{' '}
+              <span className="hero__sub-emphasis">
+                Wivme measures what your child actually remembers.
+              </span>{' '}
+              Now in pilot for Grade 8 (ICSE &amp; CBSE) — free this academic
+              year for our founding parents.
             </p>
             <div ref={actionsRef} className="hero__actions">
-              <a href="https://calendly.com/anshu-wivmeai/30min" target="_blank" rel="noopener noreferrer" className="btn btn--violet">Get early access</a>
+              <button type="button" className="btn btn--coral" onClick={openModal}>
+                Register for the pilot
+              </button>
+              <a href="#pilot" className="btn btn--outline">
+                Learn more
+              </a>
             </div>
           </div>
         </div>

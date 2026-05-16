@@ -5,6 +5,7 @@ import { gsap, ScrollTrigger } from '@/lib/gsap';
 import ScrollIndicator from '@/components/ScrollIndicator';
 import schoolImage from '@/Images/4 School building or classroom environment.png';
 import teacherImage from '@/Images/5 Teacher reviewing dashboard.png';
+import promptImage from '@/Images/1 Student receiving a micro-revision prompt on phone.png';
 import studentImage from '@/Images/6 Student on phone reviewing prompt.png';
 
 /* ──────────────────────────────────────────────────────────
@@ -121,12 +122,20 @@ export default function WhoItsFor() {
       imageSrc: teacherImage,
     },
     {
+      label: 'Parents',
+      labelColor: 'amber',
+      title: "Parents who don't want last-minute cramming",
+      desc: 'See what your child is forgetting before exams expose it.',
+      imgLabel: 'Student revising on phone at home',
+      imageSrc: studentImage,
+    },
+    {
       label: 'Students',
       labelColor: 'sage',
       title: 'Students who want to actually remember',
       desc: "10 minutes a day. That's all it takes. Short, targeted prompts that fit between classes.",
-      imgLabel: 'Student on phone reviewing prompt',
-      imageSrc: studentImage,
+      imgLabel: 'Student receiving a micro-revision prompt on phone',
+      imageSrc: promptImage,
     },
   ];
 

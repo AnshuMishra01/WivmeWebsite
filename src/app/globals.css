@@ -452,7 +452,20 @@ img, video, svg { display: block; max-width: 100%; }
   transition: transform 0.25s var(--ease-expo), box-shadow 0.25s;
 }
 .nav-cta:hover { transform: translateY(-1px); box-shadow: 0 8px 22px var(--nav-cta-shadow); }
-@media (max-width: 768px) { .nav-links { display: none; } }
+
+.nav-cta-mobile {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+
+  .nav-cta-mobile {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
 
 /* ==========================================================================
    HERO — clean product layout
@@ -1013,6 +1026,7 @@ img, video, svg { display: block; max-width: 100%; }
 .who-its-for__shuffle-card--violet { background: var(--c-violet-soft); }
 .who-its-for__shuffle-card--coral  { background: var(--c-coral-soft); }
 .who-its-for__shuffle-card--sage   { background: var(--c-sage-soft); }
+.who-its-for__shuffle-card--amber  { background: var(--c-amber-soft); }
 
 .who-its-for__shuffle-media {
   position: relative;
@@ -1461,8 +1475,607 @@ img, video, svg { display: block; max-width: 100%; }
   transform: translateX(2px);
 }
 
+/* ==========================================================================
+   AUDIENCE MODAL
+   ========================================================================== */
+.audience-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 12000;
+  display: grid;
+  place-items: center;
+  padding: var(--s-md);
+}
+
+.audience-modal__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(17, 17, 19, 0.52);
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+}
+
+.audience-modal__panel {
+  position: relative;
+  width: min(720px, 100%);
+  max-height: min(86vh, 920px);
+  overflow-y: auto;
+  background: var(--c-warm-white);
+  color: var(--c-text);
+  border: 1px solid var(--c-border);
+  border-radius: 20px;
+  box-shadow: 0 22px 56px rgba(0, 0, 0, 0.2);
+  padding: clamp(1.1rem, 1rem + 1vw, 1.8rem);
+}
+
+.audience-modal__close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 34px;
+  height: 34px;
+  border-radius: 999px;
+  border: 1px solid var(--c-border);
+  background: rgba(255, 255, 255, 0.72);
+  font-size: 1.3rem;
+  line-height: 1;
+}
+
+.audience-modal__content {
+  display: grid;
+  gap: var(--s-sm);
+}
+
+.audience-modal__title {
+  font-size: var(--t-2xl);
+  line-height: 1.12;
+  letter-spacing: -0.02em;
+  max-width: 24ch;
+}
+
+.audience-modal__subtitle {
+  color: var(--c-text-dim);
+  max-width: 52ch;
+}
+
+.audience-modal__choices {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-sm);
+  margin-top: var(--s-xs);
+}
+
+.audience-modal__form {
+  display: grid;
+  gap: 10px;
+}
+
+.audience-modal__form input,
+.audience-modal__form select,
+.audience-modal__form textarea {
+  width: 100%;
+  border: 1px solid rgba(26, 26, 30, 0.14);
+  border-radius: 12px;
+  padding: 0.78rem 0.86rem;
+  background: #fff;
+  color: var(--c-text);
+  font-size: var(--t-sm);
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.audience-modal__form input:focus,
+.audience-modal__form select:focus,
+.audience-modal__form textarea:focus {
+  border-color: var(--c-violet);
+  box-shadow: 0 0 0 3px rgba(99, 70, 230, 0.14);
+}
+
+.audience-modal__actions {
+  margin-top: 4px;
+  display: flex;
+  gap: var(--s-sm);
+  flex-wrap: wrap;
+}
+
+.audience-modal__actions--center {
+  justify-content: flex-start;
+}
+
+@media (max-width: 640px) {
+  .audience-modal__panel {
+    border-radius: 16px;
+    padding: 1rem;
+  }
+
+  .audience-modal__actions {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+}
+
 @media (max-width: 920px) {
   .contact-details__grid {
     grid-template-columns: 1fr;
   }
 }
+
+/* ──────────────────────────────────────────────────────────
+   PILOT — additions for the pilot launch.
+   Hero pill, ThePilot section, pricing strikethrough,
+   nav badge, and modal extras (selects row, error, price).
+   ────────────────────────────────────────────────────────── */
+
+/* ── Hero pilot pill ── */
+.hero__pilot-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55em;
+  padding: 0.5rem 0.95rem;
+  margin-bottom: clamp(1rem, 0.6rem + 1vw, 1.6rem);
+  border-radius: 999px;
+  background: rgba(232, 87, 61, 0.10);
+  border: 1px solid rgba(232, 87, 61, 0.32);
+  color: var(--c-coral);
+  font-size: var(--t-xs);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-decoration: none;
+  width: fit-content;
+  transition: background 0.25s ease, transform 0.25s ease, border-color 0.25s ease;
+}
+.hero__pilot-pill:hover {
+  background: rgba(232, 87, 61, 0.16);
+  border-color: rgba(232, 87, 61, 0.5);
+  transform: translateY(-1px);
+}
+.hero__pilot-pill-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--c-coral);
+  box-shadow: 0 0 0 0 rgba(232, 87, 61, 0.55);
+  animation: pilot-pulse 2s ease-in-out infinite;
+}
+.hero__pilot-pill-sep {
+  opacity: 0.45;
+  margin: 0 0.05em;
+}
+.hero__pilot-pill-arrow {
+  margin-left: 0.15em;
+  transition: transform 0.25s ease;
+}
+.hero__pilot-pill:hover .hero__pilot-pill-arrow {
+  transform: translateX(3px);
+}
+
+@keyframes pilot-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(232, 87, 61, 0.55); }
+  50%      { box-shadow: 0 0 0 6px rgba(232, 87, 61, 0); }
+}
+
+/* ── Nav: badge dot for "Pilot" link ── */
+.nav-link--badge {
+  position: relative;
+}
+.nav-link__badge {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--c-coral);
+  margin-left: 0.45em;
+  vertical-align: middle;
+  box-shadow: 0 0 0 0 rgba(232, 87, 61, 0.55);
+  animation: pilot-pulse 2s ease-in-out infinite;
+}
+
+/* ── ThePilot section ── */
+.the-pilot {
+  position: relative;
+  background: var(--c-cream);
+  color: var(--c-text);
+  padding: clamp(4rem, 6vw, 7rem) 0;
+}
+
+.the-pilot__head {
+  max-width: 760px;
+  margin-bottom: clamp(2rem, 3vw, 3.4rem);
+}
+
+.the-pilot__headline {
+  font-size: var(--t-3xl);
+  line-height: 1.05;
+  letter-spacing: -0.025em;
+  margin-top: var(--s-sm);
+}
+
+.the-pilot__lede {
+  margin-top: var(--s-md);
+  max-width: 60ch;
+  color: var(--c-text);
+  opacity: 0.82;
+  font-size: var(--t-md);
+  line-height: 1.55;
+}
+
+.the-pilot__grid {
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  gap: clamp(1.6rem, 3vw, 3rem);
+  align-items: start;
+}
+
+@media (max-width: 980px) {
+  .the-pilot__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.the-pilot__pillars {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(1rem, 2vw, 1.6rem);
+}
+
+@media (max-width: 640px) {
+  .the-pilot__pillars {
+    grid-template-columns: 1fr;
+  }
+}
+
+.the-pilot__pillar {
+  background: rgba(255, 255, 255, 0.55);
+  border: 1px solid rgba(26, 26, 30, 0.08);
+  border-radius: 16px;
+  padding: clamp(1.1rem, 1vw + 0.7rem, 1.5rem);
+  display: grid;
+  gap: 0.5rem;
+  align-content: start;
+}
+
+.the-pilot__pillar-num {
+  font-family: var(--font-instrument-serif), serif;
+  font-size: var(--t-xl);
+  color: var(--c-coral);
+  line-height: 1;
+}
+
+.the-pilot__pillar h3 {
+  font-size: var(--t-md);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.the-pilot__pillar p {
+  font-size: var(--t-sm);
+  line-height: 1.55;
+  color: var(--c-text);
+  opacity: 0.78;
+}
+
+/* ── Pricing card with strikethrough animation ── */
+.the-pilot__price-card {
+  position: sticky;
+  top: 90px;
+  background: var(--c-charcoal);
+  color: var(--c-cream);
+  border-radius: 22px;
+  padding: clamp(1.5rem, 1vw + 1.2rem, 2.1rem);
+  box-shadow: 0 22px 56px rgba(0, 0, 0, 0.18);
+  display: grid;
+  gap: 0.85rem;
+}
+
+@media (max-width: 980px) {
+  .the-pilot__price-card { position: static; }
+}
+
+.the-pilot__price-label {
+  font-size: var(--t-xs);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(245, 241, 235, 0.55);
+}
+
+.the-pilot__price-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55em;
+  align-self: start;
+  padding: 0.4rem 0.8rem;
+  border-radius: 999px;
+  background: rgba(232, 87, 61, 0.18);
+  border: 1px solid rgba(232, 87, 61, 0.45);
+  color: var(--c-coral);
+  font-size: var(--t-xs);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.the-pilot__price-badge-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--c-coral);
+  box-shadow: 0 0 0 0 rgba(232, 87, 61, 0.55);
+  animation: pilot-pulse 2s ease-in-out infinite;
+}
+
+.the-pilot__price-strike-wrap {
+  position: relative;
+}
+
+.the-pilot__price-strike {
+  position: relative;
+  display: inline-block;
+  font-size: var(--t-md);
+  color: rgba(245, 241, 235, 0.55);
+  padding: 0 0.1em;
+}
+
+.the-pilot__strike-line {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  height: 2px;
+  background: var(--c-coral);
+  transform-origin: left center;
+  transform: scaleX(0);
+}
+
+.the-pilot__price-free {
+  font-family: var(--font-instrument-serif), serif;
+  font-size: clamp(3.2rem, 6vw, 4.8rem);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  display: flex;
+  align-items: baseline;
+  gap: 0.6rem;
+  color: var(--c-cream);
+}
+
+.the-pilot__price-free-sub {
+  font-family: inherit;
+  font-size: var(--t-sm);
+  font-weight: 500;
+  color: rgba(245, 241, 235, 0.7);
+  letter-spacing: 0;
+}
+
+.the-pilot__price-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 0.45rem;
+}
+.the-pilot__price-list li {
+  position: relative;
+  padding-left: 1.4rem;
+  font-size: var(--t-sm);
+  color: rgba(245, 241, 235, 0.85);
+}
+.the-pilot__price-list li::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0.6em;
+  width: 14px; height: 2px;
+  background: var(--c-coral);
+}
+
+.the-pilot__cta {
+  margin-top: 0.4rem;
+  width: 100%;
+  justify-content: center;
+}
+
+.the-pilot__cta-note {
+  font-size: var(--t-xs);
+  color: rgba(245, 241, 235, 0.55);
+  text-align: center;
+}
+
+/* ── Modal extras for the new fields and pricing line ── */
+.audience-modal__row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+@media (max-width: 520px) {
+  .audience-modal__row {
+    grid-template-columns: 1fr;
+  }
+}
+
+.audience-modal__price-strike {
+  position: relative;
+  display: inline-block;
+  color: var(--c-text-dim);
+}
+.audience-modal__price-strike::after {
+  content: '';
+  position: absolute;
+  left: -2px; right: -2px;
+  top: 52%;
+  height: 2px;
+  background: var(--c-coral);
+  transform: rotate(-2deg);
+}
+.audience-modal__price-free {
+  color: var(--c-coral);
+}
+
+.audience-modal__error {
+  background: rgba(232, 87, 61, 0.10);
+  border: 1px solid rgba(232, 87, 61, 0.32);
+  color: var(--c-coral);
+  border-radius: 10px;
+  padding: 0.65rem 0.8rem;
+  font-size: var(--t-sm);
+}
+
+/* Honeypot — visually hidden but still rendered, so naive bots fill it.
+   Not display:none, since some scrapers skip those. */
+.honeypot {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+/* ──────────────────────────────────────────────────────────
+   ROUND 2 ADDITIONS: Hero source line, sub emphasis, pilot
+   expectations block, CTA sub, site footer.
+   ────────────────────────────────────────────────────────── */
+
+/* Hero — citation under the recall panel */
+.hero__recall-source {
+  margin-top: 0.85rem;
+  font-size: var(--t-xs);
+  letter-spacing: 0.04em;
+  color: var(--c-text-dim);
+  font-style: italic;
+}
+
+/* Hero — sub emphasis (the central insight phrase) */
+.hero__sub-emphasis {
+  color: var(--c-text);
+  font-weight: 600;
+}
+
+/* ThePilot — expectations block (left column, below pillars) */
+.the-pilot__expectations {
+  grid-column: 1 / -1;
+  margin-top: clamp(1rem, 1.4vw, 1.6rem);
+  background: rgba(232, 87, 61, 0.06);
+  border: 1px solid rgba(232, 87, 61, 0.18);
+  border-radius: 16px;
+  padding: clamp(1.1rem, 1vw + 0.7rem, 1.5rem);
+}
+
+.the-pilot__expectations-label {
+  font-size: var(--t-xs);
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--c-coral);
+  margin-bottom: 0.6rem;
+}
+
+.the-pilot__expectations-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 0.4rem;
+}
+.the-pilot__expectations-list li {
+  position: relative;
+  padding-left: 1.4rem;
+  font-size: var(--t-sm);
+  line-height: 1.55;
+  color: var(--c-text);
+}
+.the-pilot__expectations-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.6em;
+  width: 14px;
+  height: 2px;
+  background: var(--c-coral);
+}
+
+/* CTA — supporting subhead under the assembled headline */
+.cta__sub {
+  margin-top: var(--s-sm);
+  margin-bottom: var(--s-md);
+  max-width: 56ch;
+  font-size: var(--t-md);
+  color: rgba(245, 241, 235, 0.78);
+  line-height: 1.5;
+}
+
+/* Site footer */
+.site-footer {
+  position: relative;
+  z-index: 5;
+  background: var(--c-charcoal);
+  color: var(--c-cream);
+  padding: clamp(2rem, 3vw, 3rem) 0 clamp(1.4rem, 2vw, 2rem);
+  border-top: 1px solid rgba(245, 241, 235, 0.08);
+}
+
+.site-footer__inner {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr auto;
+  gap: clamp(1.2rem, 2vw, 2.2rem);
+  align-items: center;
+}
+
+.site-footer__brand {
+  display: grid;
+  gap: 0.3rem;
+}
+
+.site-footer__logo {
+  font-family: var(--font-instrument-serif), serif;
+  font-size: var(--t-xl);
+  letter-spacing: -0.01em;
+}
+
+.site-footer__tag {
+  font-size: var(--t-xs);
+  color: rgba(245, 241, 235, 0.55);
+}
+
+.site-footer__nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: clamp(0.8rem, 1.4vw, 1.4rem);
+  font-size: var(--t-sm);
+}
+
+.site-footer__nav a {
+  color: rgba(245, 241, 235, 0.78);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+.site-footer__nav a:hover {
+  color: var(--c-cream);
+}
+
+.site-footer__meta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.2rem;
+  font-size: var(--t-xs);
+  color: rgba(245, 241, 235, 0.55);
+  text-align: right;
+}
+
+.site-footer__meta a {
+  color: rgba(245, 241, 235, 0.78);
+  text-decoration: none;
+}
+.site-footer__meta a:hover {
+  color: var(--c-cream);
+}
+
+@media (max-width: 720px) {
+  .site-footer__inner {
+    grid-template-columns: 1fr;
+    text-align: left;
+  }
+  .site-footer__meta {
+    align-items: flex-start;
+    text-align: left;
+  }
+}
+

@@ -1,6 +1,7 @@
 'use client';
 import { useEffect, useRef } from 'react';
 import { gsap, ScrollTrigger } from '@/lib/gsap';
+import { useAudienceModal } from './AudienceModalProvider';
 
 /* ──────────────────────────────────────────────────────────
    CallToAction — Character-assembly animation.
@@ -23,6 +24,7 @@ import { gsap, ScrollTrigger } from '@/lib/gsap';
    ────────────────────────────────────────────────────────── */
 
 export default function CallToAction() {
+  const { openModal } = useAudienceModal();
   const sectionRef = useRef<HTMLElement>(null);
   const headlineRef = useRef<HTMLHeadingElement>(null);
 
@@ -74,12 +76,13 @@ export default function CallToAction() {
         },
       });
 
-      /* Action buttons — simple fade after headline assembles */
-      gsap.from('.cta__actions', {
+      /* Sub + action buttons — simple fade after headline assembles */
+      gsap.from(['.cta__sub', '.cta__actions'], {
         y: 20,
         opacity: 0,
         duration: 0.7,
         ease: 'expo.out',
+        stagger: 0.08,
         scrollTrigger: {
           trigger: sectionRef.current,
           start: 'top 60%',
@@ -95,11 +98,17 @@ export default function CallToAction() {
     <section ref={sectionRef} className="cta dark-s">
       <div className="container-full">
         <h2 ref={headlineRef} className="cta__headline">
-          Protect learning after class.
+          Become a founding parent.
         </h2>
+        <p className="cta__sub">
+          Free this academic year. Help shape what your child&apos;s school could
+          look like a year from now.
+        </p>
         <div className="cta__actions">
-          <a href="https://calendly.com/anshu-wivmeai/30min" target="_blank" rel="noopener noreferrer" className="btn btn--violet">Get early access</a>
-          <a href="/contact" className="btn btn--outline">Contact</a>
+          <button type="button" className="btn btn--coral" onClick={openModal}>
+            Register for the pilot
+          </button>
+          <a href="/contact" className="btn btn--outline">Talk to a founder</a>
         </div>
 
       </div>
