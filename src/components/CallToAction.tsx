@@ -39,13 +39,27 @@ export default function CallToAction() {
 
       const chars: HTMLSpanElement[] = [];
 
-      text.split('').forEach((char) => {
-        const span = document.createElement('span');
-        span.textContent = char === ' ' ? '\u00A0' : char;
-        span.style.display = 'inline-block';
-        span.style.willChange = 'transform, opacity';
-        headline.appendChild(span);
-        chars.push(span);
+      /* Wrap each WORD in an inline-block container so words never
+         break mid-character. Individual characters inside still scatter. */
+      const words = text.split(' ');
+      words.forEach((word, wi) => {
+        const wordWrap = document.createElement('span');
+        wordWrap.style.display = 'inline-block';
+        wordWrap.style.whiteSpace = 'nowrap';
+
+        word.split('').forEach((char) => {
+          const charSpan = document.createElement('span');
+          charSpan.textContent = char;
+          charSpan.style.display = 'inline-block';
+          charSpan.style.willChange = 'transform, opacity';
+          wordWrap.appendChild(charSpan);
+          chars.push(charSpan);
+        });
+
+        headline.appendChild(wordWrap);
+        if (wi < words.length - 1) {
+          headline.appendChild(document.createTextNode(' '));
+        }
       });
 
       /* Scatter characters to random positions */
@@ -96,7 +110,7 @@ export default function CallToAction() {
 
   return (
     <section ref={sectionRef} className="cta dark-s">
-      <div className="container-full">
+      <div className="container">
         <h2 ref={headlineRef} className="cta__headline">
           Be one of the first to use Wivme.
         </h2>

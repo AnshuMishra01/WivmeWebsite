@@ -22,7 +22,6 @@ export default function SiteFooter() {
 
         <div className="site-footer__meta">
           <span>&copy; {year} Wivme</span>
-          <a href="mailto:hello@wivme.ai">hello@wivme.ai</a>
         </div>
       </div>
     </footer>

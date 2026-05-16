@@ -1993,8 +1993,7 @@ img, video, svg { display: block; max-width: 100%; }
 
 /* CTA — supporting subhead under the assembled headline */
 .cta__sub {
-  margin-top: var(--s-sm);
-  margin-bottom: var(--s-md);
+  margin: var(--s-sm) auto var(--s-md);
   max-width: 56ch;
   font-size: var(--t-md);
   color: rgba(245, 241, 235, 0.78);
