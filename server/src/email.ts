@@ -46,17 +46,17 @@ export async function sendPilotConfirmation(
 ) {
   await send({
     to,
-    subject: "Welcome aboard — you're a Wivme founding parent",
+    subject: "Welcome aboard. You're a Wivme founding parent",
     html: wrap(`
       <p>Hi ${escapeHtml(parentName)},</p>
       <p>Thanks for registering <strong>${escapeHtml(studentName)}</strong> for the Wivme pilot. You're in.</p>
       <p>Here's what happens next:</p>
       <ul>
         <li>One of us will personally reach out within 2 working days to walk you through onboarding.</li>
-        <li>The pilot is <strong>fully free</strong> for founding parents — normally ₹1,500/year per student.</li>
+        <li>The pilot is <strong>fully free</strong> for founding parents. Normally ₹1,500/year per student.</li>
         <li>In return, we'll occasionally ask for your honest feedback so we can shape the product around real students learning real things.</li>
       </ul>
-      <p>This isn't a soft launch — it's how we're building the product. The choices we make over the next year will be informed by what your child actually experiences. You're not just trying Wivme. You're helping build it.</p>
+      <p>This isn't a soft launch. It's how we're building the product. The choices we make over the next year will be informed by what your child actually experiences. You're not just trying Wivme. You're helping build it.</p>
       <p>Talk soon,<br/>Bhargav &amp; Anshu<br/>Founders, Wivme</p>
     `),
   });
@@ -87,7 +87,7 @@ export async function sendSchoolInquiryConfirmation(
 ) {
   await send({
     to,
-    subject: 'Wivme — we received your inquiry',
+    subject: 'Wivme: we received your inquiry',
     html: wrap(`
       <p>Hi ${escapeHtml(contactPerson)},</p>
       <p>Thanks for reaching out about <strong>${escapeHtml(schoolName)}</strong>. We've received your inquiry and one of the founders will personally get back to you within 2 working days to set up a conversation.</p>

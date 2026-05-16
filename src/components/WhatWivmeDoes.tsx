@@ -84,7 +84,7 @@ export default function WhatWivmeDoes() {
     {
       num: '01',
       title: 'Recall, the moment it matters',
-      desc: 'Short, low-effort revision moments arrive on your child’s phone exactly when memory starts to fade — not on a calendar, not on a quiz day, but at the moment science says the lesson is most at risk of being lost.',
+      desc: 'Short, low-effort revision moments arrive on your child’s phone exactly when memory starts to fade. Not on a calendar, not on a quiz day, but at the moment science says the lesson is most at risk of being lost.',
       color: 'violet',
       imgLabel: 'Student receiving a micro-revision prompt on phone',
       imageSrc: promptImage,
@@ -92,7 +92,7 @@ export default function WhatWivmeDoes() {
     {
       num: '02',
       title: 'Built into the school day',
-      desc: 'Most learning apps live or die by whether your child feels like opening them. Wivme doesn’t. It’s tied to the lessons their school is actually teaching, every week — so it sticks where other apps quietly stop being used.',
+      desc: 'Most learning apps live or die by whether your child feels like opening them. Wivme doesn’t. It’s tied to the lessons their school is actually teaching, every week. So it sticks where other apps quietly stop being used.',
       color: 'coral',
       imgLabel: 'Spaced repetition schedule visualization',
       imageSrc: repetitionImage,
@@ -100,7 +100,7 @@ export default function WhatWivmeDoes() {
     {
       num: '03',
       title: 'Memory, made visible',
-      desc: 'For the first time, what your child has actually retained — not just what they sat through — becomes something you and the school can see. Weeks before the next test, not after the report card.',
+      desc: 'For the first time, what your child has actually retained, not just what they sat through, becomes something you and the school can see. Weeks before the next test, not after the report card.',
       color: 'sage',
       imgLabel: 'Teacher dashboard showing class retention data',
       imageSrc: dashboardImage,

@@ -131,7 +131,7 @@ export default function WhyItWorks() {
             </h2>
             <p className="why-it-works__body">
               The science is settled. Memory decays on a predictable curve, and
-              well-timed retrieval can flatten it. None of this is new — it&apos;s been
+              well-timed retrieval can flatten it. None of this is new. It&apos;s been
               replicated across 140 years of cognitive psychology.
             </p>
             <p className="why-it-works__body">

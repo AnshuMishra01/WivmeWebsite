@@ -79,7 +79,7 @@ export default function TheGap() {
     { text: 'Your child understands the lesson.', cls: '' },
     { text: 'Then they forget. Within hours.', cls: '' },
     { text: '67% gone by tomorrow.', cls: 'the-gap__line--accent' },
-    { text: "No one was tracking what was lost — until now.", cls: 'the-gap__line--small' },
+    { text: "No one was tracking what was lost. Until now.", cls: 'the-gap__line--small' },
   ];
 
   const barColors = ['#6346E6', '#8B71F0', '#B9A5F7', '#D4C8FB', '#E5DFFC'];

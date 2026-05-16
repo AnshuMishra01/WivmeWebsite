@@ -98,17 +98,19 @@ export default function CallToAction() {
     <section ref={sectionRef} className="cta dark-s">
       <div className="container-full">
         <h2 ref={headlineRef} className="cta__headline">
-          Become a founding parent.
+          Be one of the first to use Wivme.
         </h2>
         <p className="cta__sub">
-          Free this academic year. Help shape what your child&apos;s school could
-          look like a year from now.
+          Free this academic year for founding parents and pilot schools. The
+          version we launch next year will be shaped by the people in the room now.
         </p>
         <div className="cta__actions">
-          <button type="button" className="btn btn--coral" onClick={openModal}>
-            Register for the pilot
+          <button type="button" className="btn btn--coral" onClick={() => openModal('parent')}>
+            Register as a parent
           </button>
-          <a href="/contact" className="btn btn--outline">Talk to a founder</a>
+          <button type="button" className="btn btn--outline" onClick={() => openModal('school')}>
+            I&apos;m a school
+          </button>
         </div>
 
       </div>

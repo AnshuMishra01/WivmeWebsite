@@ -147,7 +147,7 @@ export default function Hero() {
               <div className="hero__day">Day 45: 5%</div>
             </div>
             <div className="hero__recall-source">
-              Ebbinghaus, 1885 — replicated for 140 years.
+              Ebbinghaus, 1885. Replicated for 140 years.
             </div>
           </div>
 
@@ -166,11 +166,11 @@ export default function Hero() {
               <span className="hero__sub-emphasis">
                 Wivme measures what your child actually remembers.
               </span>{' '}
-              Now in pilot for Grade 8 (ICSE &amp; CBSE) — free this academic
+              Now in pilot for Grade 8 (ICSE &amp; CBSE). Free this academic
               year for our founding parents.
             </p>
             <div ref={actionsRef} className="hero__actions">
-              <button type="button" className="btn btn--coral" onClick={openModal}>
+              <button type="button" className="btn btn--coral" onClick={() => openModal()}>
                 Register for the pilot
               </button>
               <a href="#pilot" className="btn btn--outline">

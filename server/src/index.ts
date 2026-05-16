@@ -164,9 +164,9 @@ app.post('/api/pilot-registrations', submitLimiter, async (req, res, next) => {
         `<p><strong>New pilot registration</strong></p>
          <ul>
            <li>Parent: ${data.parentName} (${data.email}, ${data.phone})</li>
-           <li>Student: ${data.studentName} — Grade ${data.grade} ${data.board}</li>
-           <li>School: ${data.schoolName ?? '—'} ${data.city ? `(${data.city})` : ''}</li>
-           <li>Source: ${data.source ?? '—'}</li>
+           <li>Student: ${data.studentName}, Grade ${data.grade} ${data.board}</li>
+           <li>School: ${data.schoolName ?? '-'} ${data.city ? `(${data.city})` : ''}</li>
+           <li>Source: ${data.source ?? '-'}</li>
          </ul>`
       ),
     ]);
@@ -215,9 +215,9 @@ app.post('/api/waitlist', submitLimiter, async (req, res, next) => {
         `<p><strong>New waitlist entry</strong></p>
          <ul>
            <li>Parent: ${data.parentName} (${data.email}, ${data.phone})</li>
-           <li>Student: ${data.studentName ?? '—'} — Grade ${data.grade} ${data.board ?? ''}</li>
-           <li>School: ${data.schoolName ?? '—'} ${data.city ? `(${data.city})` : ''}</li>
-           <li>Source: ${data.source ?? '—'}</li>
+           <li>Student: ${data.studentName ?? '-'}, Grade ${data.grade} ${data.board ?? ''}</li>
+           <li>School: ${data.schoolName ?? '-'} ${data.city ? `(${data.city})` : ''}</li>
+           <li>Source: ${data.source ?? '-'}</li>
          </ul>`
       ),
     ]);
@@ -265,11 +265,11 @@ app.post('/api/school-inquiries', submitLimiter, async (req, res, next) => {
         'New school inquiry',
         `<p><strong>New school inquiry</strong></p>
          <ul>
-           <li>School: ${data.schoolName} (${data.board}) ${data.city ? `— ${data.city}` : ''}</li>
+           <li>School: ${data.schoolName} (${data.board}) ${data.city ? `, ${data.city}` : ''}</li>
            <li>Contact: ${data.contactPerson}, ${data.role}</li>
            <li>Email/Phone: ${data.email} / ${data.phone}</li>
-           <li>Students: ${data.studentCount ?? '—'}</li>
-           <li>Message: ${data.message ?? '—'}</li>
+           <li>Students: ${data.studentCount ?? '-'}</li>
+           <li>Message: ${data.message ?? '-'}</li>
          </ul>`
       ),
     ]);

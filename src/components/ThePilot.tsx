@@ -93,10 +93,10 @@ export default function ThePilot() {
             <span className="serif">How much do they actually remember?</span>
           </h2>
           <p className="the-pilot__lede">
-            For most parents, the honest answer is: <em>we don&apos;t know — until the
+            For most parents, the honest answer is: <em>we don&apos;t know, until the
             report card arrives.</em> We&apos;re changing that, starting with{' '}
             <strong>Grade 8 students on the ICSE and CBSE boards</strong>. The pilot
-            isn&apos;t about scale — it&apos;s about quietly learning what genuinely
+            isn&apos;t about scale. It&apos;s about quietly learning what genuinely
             helps a real student remember what they were taught, before we open it
             up fully next academic year.
           </p>
@@ -126,7 +126,7 @@ export default function ThePilot() {
               <h3>Other grades, soon</h3>
               <p>
                 We&apos;re starting with Grade 8 to do it well. Other grades roll out
-                after the pilot — join the waitlist and we&apos;ll let you know the
+                after the pilot. Join the waitlist and we&apos;ll let you know the
                 moment your child&apos;s grade opens.
               </p>
             </div>
@@ -149,7 +149,7 @@ export default function ThePilot() {
               <li>Around 10 focused minutes a day, on a phone</li>
               <li>Tied to what they&apos;re actually being taught at school</li>
               <li>No extra homework, no extra tutoring sessions</li>
-              <li>You&apos;ll see what&apos;s sticking and what isn&apos;t — long before the next test</li>
+              <li>You&apos;ll see what&apos;s sticking and what isn&apos;t, long before the next test</li>
               <li>No card, no auto-renewal, opt out any time</li>
             </ul>
           </div>
@@ -182,7 +182,7 @@ export default function ThePilot() {
               <li>No card, no hidden charges</li>
             </ul>
 
-            <button type="button" className="btn btn--coral the-pilot__cta" onClick={openModal}>
+            <button type="button" className="btn btn--coral the-pilot__cta" onClick={() => openModal()}>
               Register for the pilot
             </button>
             <p className="the-pilot__cta-note">

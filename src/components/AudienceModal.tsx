@@ -6,6 +6,7 @@ import {
   submitSchoolInquiry,
   submitWaitlist,
 } from '@/lib/api';
+import type { AudienceModalEntry } from './AudienceModalProvider';
 
 type Step =
   | 'audience'
@@ -17,6 +18,7 @@ type Step =
 
 interface AudienceModalProps {
   open: boolean;
+  entry?: AudienceModalEntry;
   onClose: () => void;
 }
 
@@ -86,10 +88,10 @@ const emptySchool: SchoolForm = {
   _gotcha: '',
 };
 
-export default function AudienceModal({ open, onClose }: AudienceModalProps) {
+export default function AudienceModal({ open, entry = 'audience', onClose }: AudienceModalProps) {
   const panelRef = useRef<HTMLDivElement>(null);
   const closeButtonRef = useRef<HTMLButtonElement>(null);
-  const [step, setStep] = useState<Step>('audience');
+  const [step, setStep] = useState<Step>(entry);
   const [parentForm, setParentForm] = useState<ParentForm>(emptyParent);
   const [schoolForm, setSchoolForm] = useState<SchoolForm>(emptySchool);
   const [submitting, setSubmitting] = useState(false);
@@ -143,14 +145,16 @@ export default function AudienceModal({ open, onClose }: AudienceModalProps) {
   }, [open, onClose]);
 
   useEffect(() => {
-    if (!open) {
-      setStep('audience');
-      setParentForm(emptyParent);
-      setSchoolForm(emptySchool);
-      setErrorMsg(null);
-      setSubmitting(false);
+    if (open) {
+      setStep(entry);
+      return;
     }
-  }, [open]);
+    setStep('audience');
+    setParentForm(emptyParent);
+    setSchoolForm(emptySchool);
+    setErrorMsg(null);
+    setSubmitting(false);
+  }, [open, entry]);
 
   if (!open) return null;
 
@@ -254,8 +258,8 @@ Pilot now open · Grade 8 · ICSE & CBSE
               Who are you here for?
             </h3>
             <p className="audience-modal__subtitle">
-              Wivme is in pilot. Free this academic year for our founding parents
-              — full launch next academic year.
+              Wivme is in pilot. Free this academic year for our founding parents.
+              Full launch next academic year.
             </p>
             <div className="audience-modal__choices">
               <button type="button" className="btn btn--coral" onClick={() => setStep('parent')}>
@@ -559,7 +563,7 @@ You&apos;re in
 You&apos;re on the list
             </p>
             <h3 id="audience-modal-title" className="audience-modal__title">
-              Thanks — we&apos;ll be in touch.
+              Thanks. We&apos;ll be in touch.
             </h3>
             <p className="audience-modal__subtitle">
               Right now the pilot is Grade 8 (ICSE/CBSE) only, so we can do it well.
@@ -579,7 +583,7 @@ You&apos;re on the list
 Inquiry received
             </p>
             <h3 id="audience-modal-title" className="audience-modal__title">
-              Thanks — we&apos;ll be in touch shortly.
+              Thanks. We&apos;ll be in touch shortly.
             </h3>
             <p className="audience-modal__subtitle">
               A founder will personally reach out within 2 working days.
