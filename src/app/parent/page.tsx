@@ -10,6 +10,7 @@ import {
   getParentChildren,
   getParentInvites,
   PARENT_APK_URL,
+  SITE_URL,
   type ParentAuthResponse,
   type InviteResponse,
 } from '@/lib/wivme-api';
@@ -124,11 +125,15 @@ export default function ParentPage() {
     }
   };
 
+  const getInviteLink = (invite: InviteResponse) =>
+    invite.magic_link || `${SITE_URL}/join/${invite.code}`;
+
   const shareWhatsApp = (invite: InviteResponse) => {
+    const link = getInviteLink(invite);
     const msg = `Hey! I've signed you up for *Wivme* — an app that helps you remember what you learn in school using short audio episodes, quizzes, and spaced repetition.
 
 Here's what to do:
-1. Tap this link: ${invite.magic_link}
+1. Tap this link: ${link}
 2. Create your account
 3. Download the app and start learning!
 
@@ -137,7 +142,8 @@ It's free for this academic year. Let me know once you've signed up!`;
   };
 
   const shareSMS = (invite: InviteResponse) => {
-    const msg = `I signed you up for Wivme - an app that helps you remember what you learn in school. Tap this link to create your account and download the app: ${invite.magic_link}`;
+    const link = getInviteLink(invite);
+    const msg = `I signed you up for Wivme - an app that helps you remember what you learn in school. Tap this link to create your account and download the app: ${link}`;
     window.open(`sms:?body=${encodeURIComponent(msg)}`, '_blank');
   };
 
@@ -274,7 +280,7 @@ It's free for this academic year. Let me know once you've signed up!`;
 
                 <div className="parent-code-box">
                   <span className="parent-code">{newInvite.code}</span>
-                  <button className="parent-btn parent-btn--small" onClick={() => copyLink(newInvite.magic_link)}>
+                  <button className="parent-btn parent-btn--small" onClick={() => copyLink(getInviteLink(newInvite))}>
                     {copied ? 'Copied!' : 'Copy Link'}
                   </button>
                 </div>
