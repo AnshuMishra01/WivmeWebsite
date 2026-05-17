@@ -2078,3 +2078,203 @@ img, video, svg { display: block; max-width: 100%; }
   }
 }
 
+/* ──────────────────────────────────────────────────────────
+   JOIN PAGE — child invite landing + registration
+   ────────────────────────────────────────────────────────── */
+
+.join-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1rem;
+  background: linear-gradient(135deg, #1a1a2e 0%, #2d1b4e 50%, #1a1a2e 100%);
+}
+
+.join-card {
+  width: 100%;
+  max-width: 480px;
+  background: #fff;
+  border-radius: 20px;
+  padding: clamp(1.5rem, 4vw, 2.5rem);
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.2);
+}
+
+.join-logo {
+  font-family: var(--font-instrument-serif, serif);
+  font-size: 1.8rem;
+  color: #7B5CD6;
+  margin-bottom: 1.5rem;
+  letter-spacing: -0.02em;
+}
+
+.join-card h2 {
+  font-size: clamp(1.4rem, 3vw, 1.8rem);
+  font-weight: 700;
+  color: #1a1a2e;
+  margin: 0 0 0.5rem;
+  line-height: 1.2;
+}
+
+.join-subtitle {
+  color: #6b6b70;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin-bottom: 1.5rem;
+}
+
+.join-steps {
+  display: grid;
+  gap: 1.2rem;
+  margin-bottom: 1.5rem;
+}
+
+.join-step {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+.join-step-num {
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #7B5CD6;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.85rem;
+}
+
+.join-step h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #1a1a2e;
+  margin: 0 0 0.3rem;
+}
+
+.join-step p {
+  font-size: 0.85rem;
+  color: #6b6b70;
+  margin: 0;
+}
+
+.join-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1.5rem;
+  border-radius: 12px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  width: 100%;
+  text-align: center;
+}
+
+.join-btn--primary {
+  background: #7B5CD6;
+  color: #fff;
+}
+.join-btn--primary:hover {
+  background: #6a4bc5;
+  transform: translateY(-1px);
+}
+.join-btn--primary:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.join-btn--download {
+  background: #1a1a2e;
+  color: #fff;
+  margin-top: 0.5rem;
+}
+.join-btn--download:hover {
+  background: #2d2d44;
+}
+
+.join-btn--back {
+  background: transparent;
+  color: #6b6b70;
+  margin-top: 0.5rem;
+}
+.join-btn--back:hover {
+  color: #1a1a2e;
+}
+
+.join-form {
+  display: grid;
+  gap: 1rem;
+}
+
+.join-form label {
+  display: grid;
+  gap: 0.3rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #1a1a2e;
+}
+
+.join-form input {
+  padding: 0.7rem 0.9rem;
+  border: 1.5px solid #e0e0e0;
+  border-radius: 10px;
+  font-size: 0.95rem;
+  transition: border-color 0.2s;
+  outline: none;
+  font-family: inherit;
+}
+.join-form input:focus {
+  border-color: #7B5CD6;
+}
+
+.join-error-msg {
+  background: rgba(232, 87, 61, 0.1);
+  border: 1px solid rgba(232, 87, 61, 0.3);
+  color: #e8573d;
+  border-radius: 10px;
+  padding: 0.6rem 0.8rem;
+  font-size: 0.85rem;
+  margin: 0;
+}
+
+.join-loading {
+  text-align: center;
+  padding: 2rem 0;
+  color: #6b6b70;
+}
+
+.join-error {
+  text-align: center;
+}
+.join-error p {
+  color: #6b6b70;
+  margin-bottom: 1.5rem;
+}
+
+.join-success {
+  text-align: center;
+}
+.join-success p {
+  color: #6b6b70;
+  margin-bottom: 1rem;
+}
+.join-next-steps {
+  background: #f5f1eb;
+  border-radius: 12px;
+  padding: 1.2rem;
+  margin-top: 1rem;
+}
+.join-next-steps p {
+  margin-bottom: 0.8rem;
+  font-size: 0.9rem;
+}
+
