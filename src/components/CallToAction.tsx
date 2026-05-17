@@ -119,9 +119,9 @@ export default function CallToAction() {
           version we launch next year will be shaped by the people in the room now.
         </p>
         <div className="cta__actions">
-          <button type="button" className="btn btn--coral" onClick={() => openModal('parent')}>
+          <a href="/parent" className="btn btn--coral">
             Register as a parent
-          </button>
+          </a>
           <button type="button" className="btn btn--outline" onClick={() => openModal('school')}>
             I&apos;m a school
           </button>

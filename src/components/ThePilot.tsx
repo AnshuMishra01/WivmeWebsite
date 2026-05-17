@@ -182,9 +182,9 @@ export default function ThePilot() {
               <li>No card, no hidden charges</li>
             </ul>
 
-            <button type="button" className="btn btn--coral the-pilot__cta" onClick={() => openModal()}>
+            <a href="/parent" className="btn btn--coral the-pilot__cta">
               Register for the pilot
-            </button>
+            </a>
             <p className="the-pilot__cta-note">
               Not on Grade 8 ICSE/CBSE? Join the waitlist for your child&apos;s grade.
             </p>

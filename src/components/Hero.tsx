@@ -170,9 +170,9 @@ export default function Hero() {
               year for our founding parents.
             </p>
             <div ref={actionsRef} className="hero__actions">
-              <button type="button" className="btn btn--coral" onClick={() => openModal()}>
+              <a href="/parent" className="btn btn--coral">
                 Register for the pilot
-              </button>
+              </a>
               <a href="#pilot" className="btn btn--outline">
                 Learn more
               </a>

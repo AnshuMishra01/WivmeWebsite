@@ -124,9 +124,9 @@ export default function Navigation() {
             {link.badge && <span className="nav-link__badge" aria-hidden />}
           </a>
         ))}
-        <button type="button" className="nav-cta" onClick={() => openModal()}>Register</button>
+        <a href="/parent" className="nav-cta">Register</a>
       </div>
-      <button type="button" className="nav-cta nav-cta-mobile" onClick={() => openModal()}>Get started</button>
+      <a href="/parent" className="nav-cta nav-cta-mobile">Get started</a>
     </nav>
   );
 }
