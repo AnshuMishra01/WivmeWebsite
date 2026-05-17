@@ -262,9 +262,9 @@ Pilot now open · Grade 8 · ICSE & CBSE
               Full launch next academic year.
             </p>
             <div className="audience-modal__choices">
-              <button type="button" className="btn btn--coral" onClick={() => setStep('parent')}>
+              <a href="/parent" className="btn btn--coral">
                 I&apos;m a Parent
-              </button>
+              </a>
               <button type="button" className="btn btn--violet" onClick={() => setStep('school')}>
                 I&apos;m a School
               </button>
