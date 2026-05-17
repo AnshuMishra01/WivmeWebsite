@@ -2283,9 +2283,8 @@ img, video, svg { display: block; max-width: 100%; }
    ────────────────────────────────────────────────────────── */
 
 .parent-page {
-  min-height: 100vh;
   background: #f5f1eb;
-  padding: 2rem 1rem;
+  padding: clamp(6rem, 10vw, 8rem) 1rem 3rem;
 }
 
 .parent-container {
@@ -2294,13 +2293,7 @@ img, video, svg { display: block; max-width: 100%; }
 }
 
 .parent-logo {
-  display: block;
-  font-family: var(--font-instrument-serif, serif);
-  font-size: 1.6rem;
-  color: #7B5CD6;
-  text-decoration: none;
-  margin-bottom: 1.5rem;
-  letter-spacing: -0.02em;
+  display: none;
 }
 
 .parent-auth-card {

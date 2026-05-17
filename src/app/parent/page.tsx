@@ -1,6 +1,8 @@
 'use client';
 
 import { FormEvent, useEffect, useState } from 'react';
+import Navigation from '@/components/Navigation';
+import SiteFooter from '@/components/SiteFooter';
 import {
   parentRegister,
   parentLogin,
@@ -8,7 +10,6 @@ import {
   getParentChildren,
   getParentInvites,
   PARENT_APK_URL,
-  STUDENT_APK_URL,
   type ParentAuthResponse,
   type InviteResponse,
 } from '@/lib/wivme-api';
@@ -150,9 +151,10 @@ export default function ParentPage() {
   };
 
   return (
+    <>
+    <Navigation />
     <div className="parent-page">
       <div className="parent-container">
-        <a href="/" className="parent-logo">Wivme</a>
 
         {view === 'auth' && (
           <div className="parent-auth-card">
@@ -190,10 +192,6 @@ export default function ParentPage() {
               </form>
             )}
 
-            <div className="parent-download-hint">
-              <p>Already registered? Download the parent app:</p>
-              <a href={PARENT_APK_URL} className="parent-btn parent-btn--outline">Download Parent App</a>
-            </div>
           </div>
         )}
 
@@ -308,5 +306,7 @@ export default function ParentPage() {
         )}
       </div>
     </div>
+    <SiteFooter />
+    </>
   );
 }
