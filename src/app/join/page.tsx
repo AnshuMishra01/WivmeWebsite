@@ -1,25 +1,17 @@
 'use client';
 
-import { FormEvent, useEffect, useState } from 'react';
-import { getInviteInfo, registerWithInvite, STUDENT_APK_URL, type InviteInfo } from '@/lib/wivme-api';
+import { useEffect, useState } from 'react';
+import { getInviteInfo, STUDENT_APK_URL, type InviteInfo } from '@/lib/wivme-api';
 
-type Step = 'loading' | 'invite' | 'register' | 'success' | 'error';
+type Step = 'loading' | 'invite' | 'error';
 
 export default function JoinPage() {
-  const [code, setCode] = useState('');
   const [step, setStep] = useState<Step>('loading');
   const [invite, setInvite] = useState<InviteInfo | null>(null);
   const [errorMsg, setErrorMsg] = useState('');
-
-  // Registration form
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [submitting, setSubmitting] = useState(false);
-  const [regError, setRegError] = useState('');
+  const [code, setCode] = useState('');
 
   useEffect(() => {
-    // Extract code from URL path: /join/WIVME-A3K9 or query: /join?code=WIVME-A3K9
     const path = window.location.pathname;
     const pathMatch = path.match(/\/join\/(.+)/);
     const params = new URLSearchParams(window.location.search);
@@ -35,7 +27,6 @@ export default function JoinPage() {
     getInviteInfo(inviteCode)
       .then((info) => {
         setInvite(info);
-        setName(info.child_name);
         setStep('invite');
       })
       .catch((err) => {
@@ -43,20 +34,6 @@ export default function JoinPage() {
         setErrorMsg(err.message);
       });
   }, []);
-
-  const handleRegister = async (e: FormEvent) => {
-    e.preventDefault();
-    setRegError('');
-    setSubmitting(true);
-    try {
-      await registerWithInvite(code, name, email, password);
-      setStep('success');
-    } catch (err: unknown) {
-      setRegError(err instanceof Error ? err.message : 'Registration failed');
-    } finally {
-      setSubmitting(false);
-    }
-  };
 
   return (
     <div className="join-page">
@@ -73,7 +50,7 @@ export default function JoinPage() {
           <div className="join-error">
             <h2>Oops!</h2>
             <p>{errorMsg}</p>
-            <a href="https://wivme.ai" className="join-btn join-btn--primary">Go to Wivme</a>
+            <a href="/" className="join-btn join-btn--primary">Go to Wivme</a>
           </div>
         )}
 
@@ -85,11 +62,16 @@ export default function JoinPage() {
               <br />Grade {invite.child_grade} &middot; {invite.child_board}
             </p>
 
+            <p className="join-about">
+              Wivme helps you remember what you learn in school using short audio episodes,
+              quizzes, and spaced repetition. Download the app to get started.
+            </p>
+
             <div className="join-steps">
               <div className="join-step">
                 <span className="join-step-num">1</span>
                 <div>
-                  <h3>Download the app</h3>
+                  <h3>Download the Wivme app</h3>
                   <a href={STUDENT_APK_URL} className="join-btn join-btn--download">
                     Download for Android
                   </a>
@@ -99,58 +81,21 @@ export default function JoinPage() {
               <div className="join-step">
                 <span className="join-step-num">2</span>
                 <div>
-                  <h3>Create your account</h3>
-                  <p>Set up your login so you can use the app.</p>
+                  <h3>Open the app and register</h3>
+                  <p>Create your account in the app using your email and password.</p>
                 </div>
               </div>
-            </div>
 
-            <button className="join-btn join-btn--primary" onClick={() => setStep('register')}>
-              Create Account
-            </button>
-          </div>
-        )}
-
-        {step === 'register' && invite && (
-          <div className="join-register">
-            <h2>Create your account</h2>
-            <p className="join-subtitle">Grade {invite.child_grade} &middot; {invite.child_board}</p>
-
-            <form onSubmit={handleRegister} className="join-form">
-              <label>
-                Name
-                <input type="text" value={name} onChange={(e) => setName(e.target.value)} required />
-              </label>
-              <label>
-                Email
-                <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required placeholder="your@email.com" />
-              </label>
-              <label>
-                Password
-                <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} required minLength={6} placeholder="At least 6 characters" />
-              </label>
-
-              {regError && <p className="join-error-msg">{regError}</p>}
-
-              <button type="submit" className="join-btn join-btn--primary" disabled={submitting}>
-                {submitting ? 'Creating...' : 'Create Account'}
-              </button>
-              <button type="button" className="join-btn join-btn--back" onClick={() => setStep('invite')}>
-                Back
-              </button>
-            </form>
-          </div>
-        )}
-
-        {step === 'success' && (
-          <div className="join-success">
-            <h2>You&apos;re all set!</h2>
-            <p>Your account is created and linked to your parent.</p>
-            <div className="join-next-steps">
-              <p><strong>Next:</strong> Download the app and log in with your email and password.</p>
-              <a href={STUDENT_APK_URL} className="join-btn join-btn--download">
-                Download Wivme App
-              </a>
+              <div className="join-step">
+                <span className="join-step-num">3</span>
+                <div>
+                  <h3>Enter your invite code</h3>
+                  <div className="join-code-display">
+                    <span className="join-code-value">{code}</span>
+                  </div>
+                  <p>Use this code in the app to link with your parent.</p>
+                </div>
+              </div>
             </div>
           </div>
         )}

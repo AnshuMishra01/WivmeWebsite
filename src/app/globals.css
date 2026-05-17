@@ -2267,15 +2267,27 @@ img, video, svg { display: block; max-width: 100%; }
   color: #6b6b70;
   margin-bottom: 1rem;
 }
-.join-next-steps {
-  background: #f5f1eb;
-  border-radius: 12px;
-  padding: 1.2rem;
-  margin-top: 1rem;
-}
-.join-next-steps p {
-  margin-bottom: 0.8rem;
+.join-about {
+  color: #6b6b70;
   font-size: 0.9rem;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+.join-code-display {
+  background: #f5f1eb;
+  border-radius: 10px;
+  padding: 0.7rem 1rem;
+  margin: 0.4rem 0;
+  display: inline-block;
+}
+
+.join-code-value {
+  font-family: monospace;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #7B5CD6;
+  letter-spacing: 0.08em;
 }
 
 /* ──────────────────────────────────────────────────────────
