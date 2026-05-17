@@ -6,7 +6,7 @@
 const BACKEND_URL = process.env.NEXT_PUBLIC_WIVME_BACKEND_URL ?? 'https://wivme-aura.onrender.com/api/v1';
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://wivmewebsite-1.onrender.com';
 
-const STUDENT_APK_URL = 'https://github.com/AnshuMishra01/WivmeWebsite/releases/download/v1.0.3/wivme-student-v1.0.3.apk';
+const STUDENT_APK_URL = 'https://github.com/AnshuMishra01/WivmeWebsite/releases/download/v1.0.4/wivme-student-v1.0.4.apk';
 const PARENT_APK_URL = 'https://github.com/AnshuMishra01/WivmeWebsite/releases/download/v1.0.1/wivme-parent-v1.0.1.apk';
 
 export { STUDENT_APK_URL, PARENT_APK_URL, SITE_URL };
