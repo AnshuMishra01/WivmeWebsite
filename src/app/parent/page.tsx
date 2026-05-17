@@ -125,12 +125,19 @@ export default function ParentPage() {
   };
 
   const shareWhatsApp = (invite: InviteResponse) => {
-    const msg = `Hey! I've signed you up for Wivme — it makes studying fun with audio episodes. Tap this link to get started: ${invite.magic_link}`;
+    const msg = `Hey! I've signed you up for *Wivme* — an app that helps you remember what you learn in school using short audio episodes, quizzes, and spaced repetition.
+
+Here's what to do:
+1. Tap this link: ${invite.magic_link}
+2. Create your account
+3. Download the app and start learning!
+
+It's free for this academic year. Let me know once you've signed up!`;
     window.open(`https://wa.me/?text=${encodeURIComponent(msg)}`, '_blank');
   };
 
   const shareSMS = (invite: InviteResponse) => {
-    const msg = `I signed you up for Wivme! Tap to get started: ${invite.magic_link}`;
+    const msg = `I signed you up for Wivme - an app that helps you remember what you learn in school. Tap this link to create your account and download the app: ${invite.magic_link}`;
     window.open(`sms:?body=${encodeURIComponent(msg)}`, '_blank');
   };
 
